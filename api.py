@@ -19,7 +19,7 @@ NYT_API_TOTAL_REQUESTS = 500  # total requests per day
 # Set the API key for NYTAPI from some file.txt
 def set_api_key(api_key_path: str) -> None:
     with Path.open(api_key_path, "r") as f:
-        global nyt
+        global nyt  # noqa: PLW0603
         nyt = NYTAPI(f.read(), parse_dates=True)
 
 # Get image URLs for a specific month and year
@@ -39,11 +39,10 @@ def get_image_urls_for_month(year: int, month: int) -> dict:
                     break
     return image_urls
 
-
 # Download an image from a URL and save it to a specified directory
 def download_image(url: str, directory: str) -> None:
     response = requests.get(url, timeout=30)
-    if response.status_code == 200:
+    if response.status_code == 200:  # noqa: PLR2004
             filename = Path(directory) / url.split("/")[-1]
             with Path.open(filename, "wb") as f:
                 f.write(response.content)
