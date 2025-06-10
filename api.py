@@ -6,10 +6,10 @@ import time
 from pathlib import Path
 from tqdm import tqdm
 
-#Already pulled: (2022, 1), (2022, 2)
+#Already pulled: 2022
 
 YEARS_TO_PULL = [2022]
-MONTHS_TO_PULL = list(range(3, 13))
+MONTHS_TO_PULL = list(range(1, 13))
 TRAINING_IMAGES_DIR = "training_images"
 IMAGE_SIZE = "thumbLarge" #thumbLarge is 150x150, xlarge is bigger, jumbo is bigger
 
