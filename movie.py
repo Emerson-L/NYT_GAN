@@ -6,7 +6,8 @@ import math
 from tqdm import tqdm
 
 #Opinion is 3138
-IMG_DIR = './training_images/health/'
+# IMG_DIR = './training_images/health/'
+IMG_DIR = './archive/natural_images/motorbike/'
 WINDOW_WIDTH = 800
 FPS = 30
 
@@ -40,16 +41,12 @@ def play_images(folder:str, fps:int=24) -> None:
         if img is None:
             continue
 
-        if i < num_imgs - 1:
-            next_img = cv2.imread(str(sorted_paths[i+1]))
-            inter_img = interpolate_linear(img, next_img, alpha=0.5)
-            inter_img = resize_image(inter_img, WINDOW_WIDTH)
+        # if i < num_imgs - 1:
+        #     next_img = cv2.imread(str(sorted_paths[i+1]))
+        #     inter_img = interpolate_linear(img, next_img, alpha=0.5)
+        #     inter_img = resize_image(inter_img, WINDOW_WIDTH)
 
         img = resize_image(img, WINDOW_WIDTH)
-        # Show circle for radius
-        #h, w = img.shape[:2]
-        #cx, cy = w // 2, h // 2
-        #cv2.circle(img, (cx, cy), RADIUS, (0, 0, 255), 2)
 
         cv2.imshow('Image Sequence', img)
 
@@ -58,11 +55,11 @@ def play_images(folder:str, fps:int=24) -> None:
             print('Quitting')
             break
 
-        if inter_img is not None:
-            cv2.imshow('Image Sequence', inter_img)
-            if cv2.waitKey(wait_time) & 0xFF == ord('q'):
-                print('Quitting')
-                break
+        # if inter_img is not None:
+        #     cv2.imshow('Image Sequence', inter_img)
+        #     if cv2.waitKey(wait_time) & 0xFF == ord('q'):
+        #         print('Quitting')
+        #         break
 
         t2 = time.time()
 
